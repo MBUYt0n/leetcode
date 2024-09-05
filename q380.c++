@@ -1,4 +1,5 @@
 #include <iostream>
+#include <unordered_map>
 #include <vector>
 
 using namespace std;
@@ -6,47 +7,37 @@ using namespace std;
 class RandomizedSet
 {
   public:
+	unordered_map<int, int> mp;
 	RandomizedSet()
 	{
-		vector<int> arr;
+		ios_base::sync_with_stdio(false);
 	}
 
 	bool insert(int val)
 	{
-		for (int i = 0; i < arr.size(); i++)
-		{
-			if (arr[i] == val)
-			{
-				return false;
-			}
-		}
-		arr.push_back(val);
-		return true;
+		return mp.insert({val, 0}).second;
 	}
 
 	bool remove(int val)
 	{
-		for (int i = 0; i < arr.size(); i++)
-		{
-			if (arr[i] == val)
-			{
-				arr.erase(arr.begin() + i);
-				return true;
-			}
-		}
-		return false;
+		return mp.erase(val);
 	}
 
 	int getRandom()
 	{
-		return arr[rand() % arr.size()];
+		return next(mp.begin(), rand() % mp.size())->first;
 	}
 };
 
-/**
- * Your RandomizedSet object will be instantiated and called as such:
- * RandomizedSet* obj = new RandomizedSet();
- * bool param_1 = obj->insert(val);
- * bool param_2 = obj->remove(val);
- * int param_3 = obj->getRandom();
- */
+int main()
+{
+	RandomizedSet *obj = new RandomizedSet();
+	cout << obj->insert(1) << endl;
+	cout << obj->remove(2) << endl;
+	cout << obj->insert(2) << endl;
+	cout << obj->getRandom() << endl;
+	cout << obj->remove(1) << endl;
+	cout << obj->insert(2) << endl;
+	cout << obj->getRandom() << endl;
+	return 0;
+}
