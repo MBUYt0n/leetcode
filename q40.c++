@@ -16,7 +16,7 @@ class Solution
 			row.push_back(i);
         r.push_back(row);
 		return r;
-	}
+	}git 
 };
 
 int main()
