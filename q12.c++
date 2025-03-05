@@ -15,7 +15,7 @@ class Solution
 
 		string res = "";
 		int digit = 0;
-        int flag = 0;
+		int flag = 0;
 		while (num > 0)
 		{
 			int i = num % 10;
@@ -36,11 +36,11 @@ class Solution
 					res = dict[base] + res;
 					i--;
 				}
-                if (flag)
-                {
-                    res = dict[5 * base] + res;
-                    flag = 0;
-                }
+				if (flag)
+				{
+					res = dict[5 * base] + res;
+					flag = 0;
+				}
 			}
 			num /= 10;
 			digit++;
