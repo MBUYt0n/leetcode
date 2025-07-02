@@ -8,21 +8,16 @@ class Solution
   public:
 	void rotate(vector<int> &nums, int k)
 	{
-		k = k % nums.size();
-		vector<int> temp(k);
-		for (int i = 0, j = nums.size() - 1; i < k; i++, j--)
+		int n = nums.size();
+		k = k % n;
+		if (k == 0)
+			return;
+		vector<int> rotated(n);
+		for (int i = 0; i < n; ++i)
 		{
-			temp[i] = nums[j];
+			rotated[(i + k) % n] = nums[i];
 		}
-
-		for (int i = nums.size() - k; i >= 0; i--)
-		{
-			nums[i + k] = nums[i];
-		}
-		for (int i = 0, j = temp.size() - 1; i < k; i++, j--)
-		{
-			nums[i] = temp[j];
-		}
+		nums = rotated;
 	}
 };
 
