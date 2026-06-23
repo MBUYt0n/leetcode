@@ -40,3 +40,4 @@ int main()
     int b[] = {2, 4};
     printf("%f\n", findMedianSortedArrays(a, 2, b, 2));
 }
+//test
